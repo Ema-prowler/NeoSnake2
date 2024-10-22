@@ -20,7 +20,7 @@ cabeza.shape("square")                  # Asignando la forma de cuadrado a la ca
 cabeza.color("white")                   # Color blanco para la cabeza de la serpiente.
 cabeza.penup()                          # Evita que la cabeza dibuje lineas mientras se mueve.
 cabeza.goto(0,0)                  # Posiciona la cabeza en el centro de la pantalla.
-
+cabeza.direction = "stop"               # La cabeza comienza detenida (Sin direccion).
 
 # Mantener la ventana abierta
 window.mainloop()  # Este metodo mantiene la ventana abierta
