@@ -15,7 +15,7 @@ window.tracer(0)                        # Desactiva la actualización automátic
 #Cabeza de la serpiente
 
 cabeza = turtle.Turtle()                # Crea el objeto 'cabeza'.
-
+cabeza.speed(0)                         # Establece la velocidad de animacion en el valor mas rapido.
 
 
 # Mantener la ventana abierta
