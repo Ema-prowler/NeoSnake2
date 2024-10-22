@@ -12,6 +12,11 @@ window.tracer(0)                        # Desactiva la actualización automátic
 
 
 
+#Cabeza de la serpiente
+
+cabeza = turtle.Turtle()                # Crea el objeto 'cabeza'.
+
+
 
 # Mantener la ventana abierta
 window.mainloop()  # Este metodo mantiene la ventana abierta
