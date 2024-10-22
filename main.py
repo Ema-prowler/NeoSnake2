@@ -4,4 +4,5 @@ import random # Para generar numeros aleatorios,como las posiciones de la comida
 
 #Configuracion de la ventana
 
-window = turtle.Screen() # Crea la ventana del juego
+window = turtle.Screen()                # Crea la ventana del juego
+window.title("NeoSnake2")               # Asigna el titulo de la ventana
