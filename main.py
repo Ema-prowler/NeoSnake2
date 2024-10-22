@@ -24,6 +24,7 @@ cabeza.direction = "stop"               # La cabeza comienza detenida (Sin direc
 
 # Comida
 comida = turtle.Turtle()                # Crear el objeto 'comida'
+comida.speed(0)                         # Velocidad de animacion rapida.
 
 
 
