@@ -7,3 +7,4 @@ import random # Para generar numeros aleatorios,como las posiciones de la comida
 window = turtle.Screen()                # Crea la ventana del juego
 window.title("NeoSnake2")               # Asigna el titulo de la ventana
 window.bgcolor("black")                 # Establecer el color de fondo a negro
+window.setup(width=600, height=600)     # Define el tamaño de la ventana a 600x600 pixeles
