@@ -16,6 +16,7 @@ window.tracer(0)                        # Desactiva la actualización automátic
 
 cabeza = turtle.Turtle()                # Crea el objeto 'cabeza'.
 cabeza.speed(0)                         # Establece la velocidad de animacion en el valor mas rapido.
+cabeza.shape("square")                  # Asignando la forma de cuadrado a la cabeza.
 
 
 # Mantener la ventana abierta
