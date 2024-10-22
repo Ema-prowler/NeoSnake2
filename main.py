@@ -22,5 +22,10 @@ cabeza.penup()                          # Evita que la cabeza dibuje lineas mien
 cabeza.goto(0,0)                  # Posiciona la cabeza en el centro de la pantalla.
 cabeza.direction = "stop"               # La cabeza comienza detenida (Sin direccion).
 
+while True:
+    window.update()                     # Actualiza la pantalla en cada iteracion.
+
+
+
 # Mantener la ventana abierta
-window.mainloop()  # Este metodo mantiene la ventana abierta
+#window.mainloop()  # Este metodo mantiene la ventana abierta
