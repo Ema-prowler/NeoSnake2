@@ -19,6 +19,7 @@ cabeza.speed(0)                         # Establece la velocidad de animacion en
 cabeza.shape("square")                  # Asignando la forma de cuadrado a la cabeza.
 cabeza.color("white")                   # Color blanco para la cabeza de la serpiente.
 cabeza.penup()                          # Evita que la cabeza dibuje lineas mientras se mueve.
+cabeza.goto(0,0)                  # Posiciona la cabeza en el centro de la pantalla.
 
 
 # Mantener la ventana abierta
