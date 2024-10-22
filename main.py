@@ -27,6 +27,7 @@ comida = turtle.Turtle()                # Crear el objeto 'comida'
 comida.speed(0)                         # Velocidad de animacion rapida.
 comida.shape("circle")                  # Asignando la forma de un circulo a la comida.
 comida.color("red")                     # Asignando el color rojo a la comida.
+comida.penup()                          # Evita que la comida dibuje mientras se mueve.
 
 
 
