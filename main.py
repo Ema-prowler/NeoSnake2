@@ -1,1 +1,4 @@
-print("hola")
+import turtle
+import time
+import random
+
