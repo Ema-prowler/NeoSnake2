@@ -18,6 +18,7 @@ cabeza = turtle.Turtle()                # Crea el objeto 'cabeza'.
 cabeza.speed(0)                         # Establece la velocidad de animacion en el valor mas rapido.
 cabeza.shape("square")                  # Asignando la forma de cuadrado a la cabeza.
 cabeza.color("white")                   # Color blanco para la cabeza de la serpiente.
+cabeza.penup()                          # Evita que la cabeza dibuje lineas mientras se mueve.
 
 
 # Mantener la ventana abierta
