@@ -2,6 +2,8 @@ import turtle #Proporciona las herramientas graficas para dibujar en la pantalla
 import time #Para controlar el tiempo,por ejemplo, pausas en el juego.
 import random # Para generar numeros aleatorios,como las posiciones de la comida
 
+
+
 #Configuracion de la ventana
 
 window = turtle.Screen()                # Crea la ventana del juego
@@ -55,7 +57,7 @@ def derecha():
     if cabeza.direction != "left":      # No se puede ir hacia la izquierda si la serpiente esta yendo hacia la derecha.
         cabeza.direction = "right"      # Cambia la direccion hacia la derecha.
 
-# Fuincion para mover la serpiente segun su direccion actual.
+# Funcion para mover la serpiente segun su direccion actual.
 
 def mov():
     if cabeza.direction == "up":        # Si la direccion es hacia arriba.
@@ -73,6 +75,16 @@ def mov():
     if cabeza.direction == "right":     # Si la direccion es hacia la derecha.
         x = cabeza.xcor()               # Obtiene la coordenada 'x' actual de la cabeza.
         cabeza.setx(x + 20)             # Mueve la cabeza 20 pixeles hacia la derecha
+
+
+# Configurar los controles del teclado
+
+window.listen()                            # Activa la escucha de eventos del teclado.
+window.onkeypress(arriba, "Up")       # Asigna la tecla 'Up' para mover la serpiente hacia arriba
+window.onkeypress(abajo, "Down")      # Asigna la tecla 'Down' para mover la serpiente hacia abajo
+window.onkeypress(izquierda, "Left")  # Asigna la tecla 'Left' para mover la serpiente hacia la izquierda
+window.onkeypress(derecha, "Right")   # Asigna la tecla 'Right' para mover la serpiente hacia la derecha.
+
 
 
 
