@@ -88,13 +88,25 @@ window.onkeypress(derecha, "Right")   # Asigna la tecla 'Right' para mover la se
 
 
 
-
+# Bucle principal del jeugo que se ejecuta de manera continua
 while True:
-    window.update()                     # Actualiza la pantalla en cada iteracion.
+    window.update()                         # Actualiza la pantalla en cada iteracion.
+
     # Llama a la funcion mov() para mover la cabeza de la serpiente segun la direccion actual
     mov()
+
     # Pausa el juego por el tiempo especificado en 'posponer' (Para controlar la velocidad)
     time.sleep(posponer)
+
+    # Detectar si la cabeza de la serpiente ha colisionado con los bordes de la ventana
+    if cabeza.xcor() > 280 or cabeza.xcor() < -280 or cabeza.ycor() > 280 or cabeza.ycor() < -280:
+        # si ocurre una colision, se pausa el juego por 1 segundo.
+        time.sleep(1)
+        
+
+
+
+
 
 # Mantener la ventana abierta
 #window.mainloop()  # Este metodo mantiene la ventana abierta
