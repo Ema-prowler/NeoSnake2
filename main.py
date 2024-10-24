@@ -55,6 +55,24 @@ def derecha():
     if cabeza.direction != "left":      # No se puede ir hacia la izquierda si la serpiente esta yendo hacia la derecha.
         cabeza.direction = "right"      # Cambia la direccion hacia la derecha.
 
+# Fuincion para mover la serpiente segun su direccion actual.
+
+def mov():
+    if cabeza.direction == "up":        # Si la direccion es hacia arriba.
+        y = cabeza.ycor()               # Obtiene la coordenada 'Y' actual de la cabeza.
+        cabeza.sety(y + 20)             # Mueve la cabeza 20 pixeles hacia arriba.
+
+    if cabeza.direction == "down":      # Si la direcicon es hacia arriba.
+        y = cabeza.ycor()               # Obtiene la coordenada 'Y' actual de la cabeza.
+        cabeza.sety(y - 20)             # Mueve la cabeza 20 pixeles hacia abajo.
+
+    if cabeza.direction == "left":      # Si la direccion es hacia la izquierda.
+        x = cabeza.xcor()               # Obtiene la coordenada 'X' actual de la cabeza.
+        cabeza.setx(x - 20)             # Mueve la cabeza 20 pixeles hacia la izquierda.
+
+    if cabeza.direction == "right":     # Si la direccion es hacia la derecha.
+        x = cabeza.xcor()               # Obtiene la coordenada 'x' actual de la cabeza.
+        cabeza.setx(x + 20)             # Mueve la cabeza 20 pixeles hacia la derecha
 
 
 
