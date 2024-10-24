@@ -5,6 +5,12 @@ import random                           # Para generar numeros aleatorios,como l
 #constantes
 posponer = 0.1                          # Tiempo de espera entre cada actualización (controla la velocidad del juego).
 
+
+# Marcador
+
+score = 0                               # Puntuacion inicial del jugador.
+high_Score = 0                          # Puntuacion mas alta alcanzada.
+
 #Configuracion de la ventana
 
 window = turtle.Screen()                # Crea la ventana del juego
@@ -13,6 +19,14 @@ window.bgcolor("black")                 # Establecer el color de fondo a negro
 window.setup(width=600, height=600)     # Define el tamaño de la ventana a 600x600 pixeles
 window.tracer(0)                        # Desactiva la actualización automática de la pantalla
 
+# Texto del marcador
+texto = turtle.Turtle()                 # Crea el objeto 'texto' para mostrar el marcador.
+texto.speed(0)                          # No se necesita velocidad de animacion.
+texto.color("white")                    # Texto de color blanco.
+texto.penup()                           # Evita que el texto dibuje lineas.
+texto.hideturtle()                      # Oculta el cursor de la tortuga.
+texto.goto(0, 260)                # Coloca el texot en la parte superior de la pantalla.
+texto.write("Score: 0   High Score: 0", align="center",font=("Courier", 24,"normal")) # Muestra el marcador inicial
 
 
 #Cabeza de la serpiente
@@ -107,13 +121,14 @@ while True:
         # Detiene el movimiento de la serpiente
         cabeza.direction = "stop"
 
-
         # Ocultar todos los segmentos del cuerpo de la serpiente
         for segmento in segmentos:
             segmento.hideturtle() # Oculta el segmento de la pantalla
 
         # Vaciar la lista de segmentos, eleiminando el cuerpo de la serpiente
         segmentos.clear()
+
+
 
     # Detectar si la cabeza de la serpiente esta lo suficientemente cerca de la comida (menos de 20 pixeles)
     if cabeza.distance(comida) < 20:
