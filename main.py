@@ -95,9 +95,6 @@ segmentos = []  # Lista para almacenar los segmentos del cuerpo de la serpiente.
 while True:
     window.update()                         # Actualiza la pantalla en cada iteracion.
 
-    # Llama a la funcion mov() para mover la cabeza de la serpiente segun la direccion actual
-    mov()
-
     # Pausa el juego por el tiempo especificado en 'posponer' (Para controlar la velocidad)
     time.sleep(posponer)
 
@@ -135,6 +132,19 @@ while True:
         # Añadir el nuevo segmento al final de la lista de segmentos.
         segmentos.append(nuevo_segmento)
 
+    #Mover el cuerpo de la serpiente
+    totalSeg = len(segmentos) # Obtener el numero total de segmentos en la serpiente
+    # Desde el ultimo segmento hacia el primero, cada uno toma la posicon del segmento anterior
+    for index in range (totalSeg -1, 0, -1):
+        x = segmentos[index - 1].xcor()         # Obtener la coordenada X del segmento anterior.
+        y = segmentos[index - 1].ycor()         # Obtener la coordenada Y del segmento anterior.
+        segmentos[index].goto(x,y)              # Mover el segmento actual a esa posicon
 
-# Mantener la ventana abierta
-#window.mainloop()  # Este metodo mantiene la ventana abierta
+    # Si la serpiente tiene al menos un segmento
+    if totalSeg > 0:
+        x = cabeza.xcor()
+        y = cabeza.ycor()
+        segmentos[0].goto(x,y)
+
+    # Llama a la funcion mov() para mover la cabeza de la serpiente segun la direccion actual
+    mov()
