@@ -1,8 +1,9 @@
-import turtle #Proporciona las herramientas graficas para dibujar en la pantalla
-import time #Para controlar el tiempo,por ejemplo, pausas en el juego.
-import random # Para generar numeros aleatorios,como las posiciones de la comida
+import turtle                           # Proporciona las herramientas graficas para dibujar en la pantalla
+import time                             # Para controlar el tiempo,por ejemplo, pausas en el juego.
+import random                           # Para generar numeros aleatorios,como las posiciones de la comida
 
-
+#constantes
+posponer = 0.1                          # Tiempo de espera entre cada actualización (controla la velocidad del juego).
 
 #Configuracion de la ventana
 
@@ -92,7 +93,8 @@ while True:
     window.update()                     # Actualiza la pantalla en cada iteracion.
     # Llama a la funcion mov() para mover la cabeza de la serpiente segun la direccion actual
     mov()
-
+    # Pausa el juego por el tiempo especificado en 'posponer' (Para controlar la velocidad)
+    time.sleep(posponer)
 
 # Mantener la ventana abierta
 #window.mainloop()  # Este metodo mantiene la ventana abierta
