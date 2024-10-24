@@ -37,6 +37,27 @@ y = random.randint(-280,280)         # Genera una posicion aleatoria en el eje Y
 comida.goto(x,y)                        # Coloca la comida en una posicion aleatoria.
 
 
+# Funciones para cambiar la direccion de la serpiente
+
+def arriba():
+    if cabeza.direction != "down":      # No se puede ir hacia abajo si la serpiente esta yendo hacia arriba.
+        cabeza.direction = "up"         # Cambia la direccion hacia arriba.
+
+def abajo():
+    if cabeza.direction != "up":        # No se peude ir hacia arriba si la serpiente esta yendo hacia abajo.
+        cabeza.direction = "down"       # Cambia la direcion hacia abajo.
+
+def izquierda():
+    if cabeza.direction != "right":     # No se puede ir hacia la derecha si la serpiente esta yendo hacia la izquierda.
+        cabeza.direction = "left"       # Cambia la direccion hacia la izquierda.
+
+def derecha():
+    if cabeza.direction != "left":      # No se puede ir hacia la izquierda si la serpiente esta yendo hacia la derecha.
+        cabeza.direction = "right"      # Cambia la direccion hacia la derecha.
+
+
+
+
 while True:
     window.update()                     # Actualiza la pantalla en cada iteracion.
 
