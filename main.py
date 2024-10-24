@@ -128,6 +128,14 @@ while True:
         # Vaciar la lista de segmentos, eleiminando el cuerpo de la serpiente
         segmentos.clear()
 
+        # Reinicia el marcador a 0
+        score = 0
+        # Borrar el textoa ctual del marcador
+        texto.clear()
+        # Actualiza y muestra el marcador y el puntaje maximo
+        texto.write("Score: {}    High Score: {}".format(score, high_Score),
+                    align="center", font=("Courier", 24, "normal"))
+
 
 
     # Detectar si la cabeza de la serpiente esta lo suficientemente cerca de la comida (menos de 20 pixeles)
