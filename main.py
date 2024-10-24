@@ -102,7 +102,10 @@ while True:
     if cabeza.xcor() > 280 or cabeza.xcor() < -280 or cabeza.ycor() > 280 or cabeza.ycor() < -280:
         # si ocurre una colision, se pausa el juego por 1 segundo.
         time.sleep(1)
-        
+        # Reinicia la posicion de la cabeza al centro de la pantalla (coordenadas 0,0)
+        cabeza.goto(0,0)
+        # Detiene el movimiento de la serpiente
+        cabeza.direction = "stop"
 
 
 
