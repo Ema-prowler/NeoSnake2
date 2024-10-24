@@ -30,6 +30,12 @@ comida.color("red")                     # Asignando el color rojo a la comida.
 comida.penup()                          # Evita que la comida dibuje mientras se mueve.
 
 
+# Generar una posición inicial aleatoria para la comida
+
+x = random.randint(-280,280)         # Genera una posicion aleatoria en el eje X.
+y = random.randint(-280,280)         # Genera una posicion aleatoria en el eje Y.
+comida.goto(x,y)                        # Coloca la comida en una posicion aleatoria.
+
 
 while True:
     window.update()                     # Actualiza la pantalla en cada iteracion.
