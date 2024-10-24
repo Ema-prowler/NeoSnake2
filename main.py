@@ -155,6 +155,18 @@ while True:
         # Añadir el nuevo segmento al final de la lista de segmentos.
         segmentos.append(nuevo_segmento)
 
+        # Incrementa el marcador en 10 puntos
+        score += 10
+
+        # Si el puntaje actual es mayor al puntaje maximo registrado.
+        if score > high_Score:
+            high_Score = score # actualiza el puntaje maximo
+
+        # Borra el texto actual y actualiza el marcador y el puntaje maximo
+        texto.clear()
+        texto.write("Score: {}    High Score: {}".format(score, high_Score),
+                    align="center", font=("Courier", 24, "normal"))
+
     #Mover el cuerpo de la serpiente
     totalSeg = len(segmentos) # Obtener el numero total de segmentos en la serpiente
     # Desde el ultimo segmento hacia el primero, cada uno toma la posicon del segmento anterior
