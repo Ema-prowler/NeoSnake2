@@ -126,7 +126,14 @@ while True:
         # Mover la comida a la nueva posicion aleatoria
         comida.goto(x,y)
 
-
+        # Crear un nuevo segmento para el cuerpo de la serpiente
+        nuevo_segmento = turtle.Turtle()
+        nuevo_segmento.speed(0)                 # Velocidad de animacion del nuevo segmento.
+        nuevo_segmento.shape("square")          # Forma cuadrada para el segmento
+        nuevo_segmento.color("grey")            # Color del segmento (Gris en este caso)
+        nuevo_segmento.penup()                  # Deshabilitar la pluma para evitar que dibuje.
+        # Añadir el nuevo segmento al final de la lista de segmentos.
+        segmentos.append(nuevo_segmento)
 
 
 # Mantener la ventana abierta
