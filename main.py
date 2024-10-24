@@ -91,7 +91,7 @@ segmentos = []  # Lista para almacenar los segmentos del cuerpo de la serpiente.
 
 
 
-# Bucle principal del jeugo que se ejecuta de manera continua
+# Bucle principal del juego que se ejecuta de manera continua
 while True:
     window.update()                         # Actualiza la pantalla en cada iteracion.
 
@@ -118,6 +118,13 @@ while True:
         # Vaciar la lista de segmentos, eleiminando el cuerpo de la serpiente
         segmentos.clear()
 
+    # Detectar si la cabeza de la serpiente esta lo suficientemente cerca de la comida (menos de 20 pixeles)
+    if cabeza.distance(comida) < 20:
+        # Generar nuevas coordenadas aleatorias para la comida dentro de los limites de la ventana
+        x = random.randint(-280, 280)
+        y = random.randint(-280, 280)
+        # Mover la comida a la nueva posicion aleatoria
+        comida.goto(x,y)
 
 
 
