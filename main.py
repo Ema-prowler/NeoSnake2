@@ -90,7 +90,8 @@ window.onkeypress(derecha, "Right")   # Asigna la tecla 'Right' para mover la se
 
 while True:
     window.update()                     # Actualiza la pantalla en cada iteracion.
-
+    # Llama a la funcion mov() para mover la cabeza de la serpiente segun la direccion actual
+    mov()
 
 
 # Mantener la ventana abierta
