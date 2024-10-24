@@ -86,6 +86,9 @@ window.onkeypress(abajo, "Down")      # Asigna la tecla 'Down' para mover la ser
 window.onkeypress(izquierda, "Left")  # Asigna la tecla 'Left' para mover la serpiente hacia la izquierda
 window.onkeypress(derecha, "Right")   # Asigna la tecla 'Right' para mover la serpiente hacia la derecha.
 
+# Segmentos del cuerpo de la serpiente (inicialmente vacíos)
+segmentos = []  # Lista para almacenar los segmentos del cuerpo de la serpiente.
+
 
 
 # Bucle principal del jeugo que se ejecuta de manera continua
@@ -106,6 +109,14 @@ while True:
         cabeza.goto(0,0)
         # Detiene el movimiento de la serpiente
         cabeza.direction = "stop"
+
+
+        # Ocultar todos los segmentos del cuerpo de la serpiente
+        for segmento in segmentos:
+            segmento.hideturtle() # Oculta el segmento de la pantalla
+
+        # Vaciar la lista de segmentos, eleiminando el cuerpo de la serpiente
+        segmentos.clear()
 
 
 
