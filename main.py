@@ -54,27 +54,33 @@ y = random.randint(-280,280)         # Genera una posicion aleatoria en el eje Y
 comida.goto(x,y)                        # Coloca la comida en una posicion aleatoria.
 
 
+# Variable para almacenar la ultima direccion completada
+
+ultima_direccion = "stop"
+
 # Funciones para cambiar la direccion de la serpiente
 
 def arriba():
-    if cabeza.direction != "down":      # No se puede ir hacia abajo si la serpiente esta yendo hacia arriba.
-        cabeza.direction = "up"         # Cambia la direccion hacia arriba.
+    if cabeza.direction != "down" and ultima_direccion != "down":      # No se puede ir hacia abajo si la serpiente esta yendo hacia arriba.
+        cabeza.direction = "up"                                        # Cambia la direccion hacia arriba.
 
 def abajo():
-    if cabeza.direction != "up":        # No se peude ir hacia arriba si la serpiente esta yendo hacia abajo.
-        cabeza.direction = "down"       # Cambia la direcion hacia abajo.
+    if cabeza.direction != "up" and ultima_direccion != "up":          # No se peude ir hacia arriba si la serpiente esta yendo hacia abajo.
+        cabeza.direction = "down"                                      # Cambia la direcion hacia abajo.
 
 def izquierda():
-    if cabeza.direction != "right":     # No se puede ir hacia la derecha si la serpiente esta yendo hacia la izquierda.
-        cabeza.direction = "left"       # Cambia la direccion hacia la izquierda.
+    if cabeza.direction != "right" and ultima_direccion != "right":    # No se puede ir hacia la derecha si la serpiente esta yendo hacia la izquierda.
+        cabeza.direction = "left"                                      # Cambia la direccion hacia la izquierda.
 
 def derecha():
-    if cabeza.direction != "left":      # No se puede ir hacia la izquierda si la serpiente esta yendo hacia la derecha.
-        cabeza.direction = "right"      # Cambia la direccion hacia la derecha.
+    if cabeza.direction != "left" and ultima_direccion != "left":      # No se puede ir hacia la izquierda si la serpiente esta yendo hacia la derecha.
+        cabeza.direction = "right"                                     # Cambia la direccion hacia la derecha.
 
 # Funcion para mover la serpiente segun su direccion actual.
 
 def mov():
+    global ultima_direccion             # Hacer referencia a la variable global
+
     if cabeza.direction == "up":        # Si la direccion es hacia arriba.
         y = cabeza.ycor()               # Obtiene la coordenada 'Y' actual de la cabeza.
         cabeza.sety(y + 20)             # Mueve la cabeza 20 pixeles hacia arriba.
@@ -90,6 +96,9 @@ def mov():
     if cabeza.direction == "right":     # Si la direccion es hacia la derecha.
         x = cabeza.xcor()               # Obtiene la coordenada 'x' actual de la cabeza.
         cabeza.setx(x + 20)             # Mueve la cabeza 20 pixeles hacia la derecha
+
+    # Actualizar 'ultima_direccion' despues de completar el movimiento
+    ultima_direccion = cabeza.direction
 
 
 # Configurar los controles del teclado
