@@ -1,6 +1,23 @@
 import turtle                           # Proporciona las herramientas graficas para dibujar en la pantalla
 import time                             # Para controlar el tiempo,por ejemplo, pausas en el juego.
 import random                           # Para generar numeros aleatorios,como las posiciones de la comida
+import pygame                           # La diversion nunca termina.
+
+# Inicializar pygame y el mixer
+pygame.mixer.init()
+
+
+# Sonidos
+# Carga la cancion de fondo
+
+pygame.mixer.music.load("assets/music/background/neon.mp3")     # Ruta de la cancion.
+pygame.mixer.music.set_volume(0.2)      # Ajusta el volumen al 20%
+pygame.mixer.music.play(-1)             # Reproducir en bucle (parametro -1 para bucle infinito)
+
+# Cargar el sonido para cuando la serpiente coma
+sonido_comida = pygame.mixer.Sound("assets/sounds/comida1.wav")     # Ruta del archivo de sonido.
+sonido_comida.set_volume(0.5)                                       # Ajusta el volumen del sonido de la comida
+
 
 #constantes
 posponer = 0.1                          # Tiempo de espera entre cada actualización (controla la velocidad del juego).
@@ -149,6 +166,7 @@ while True:
 
     # Detectar si la cabeza de la serpiente esta lo suficientemente cerca de la comida (menos de 20 pixeles)
     if cabeza.distance(comida) < 20:
+        sonido_comida.play()                    # Reproducir el sonido de la comida.
         # Generar nuevas coordenadas aleatorias para la comida dentro de los limites de la ventana
         x = random.randint(-280, 280)
         y = random.randint(-280, 280)
