@@ -192,3 +192,29 @@ while True:
 
     # Llama a la funcion mov() para mover la cabeza de la serpiente segun la direccion actual
     mov()
+
+    # Detectar colisiones entre la cabeza y el cuerpo de la serpiente
+    for segmento in segmentos:
+        # Si la cabeza esta lo suficientemente cerca de cualquier segmento del cuerpo (menos de 20 pixeles)
+        if segmento.distance(cabeza) < 20:
+            # Pausar el juepo por 1 segundo antes de reiniciar
+            time.sleep(1)
+            # Reiniciar la posicion de la cabeza al centro de la pantalla
+            cabeza.goto(0,0)
+            # Detener el movimiento de la serpiente
+            cabeza.direction = "stop"
+
+            # Ocultar todos los segmentos del cuerpo de la serpiente
+            for segmento in segmentos:
+                segmento.hideturtle()  # Ocultar cada segmento de la pantalla
+
+            # Vaciar la lista de segmentos para reiniciar el cuerpo de la serpiente.
+            segmentos.clear()
+
+
+            # Reiniciar el marcador a 0
+            score = 0
+            # Borrar el texto actual del marcador y actualizarlo
+            texto.clear()
+            texto.write("Score: {}    High Score: {}".format(score, high_Score),
+                        align="center", font=("Courier", 24, "normal"))
