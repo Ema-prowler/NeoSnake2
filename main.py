@@ -18,6 +18,9 @@ pygame.mixer.music.play(-1)             # Reproducir en bucle (parametro -1 para
 sonido_comida = pygame.mixer.Sound("assets/sounds/comida1.wav")     # Ruta del archivo de sonido.
 sonido_comida.set_volume(0.5)                                       # Ajusta el volumen del sonido de la comida
 
+# Cargar el sonido para cuando la serpiente toque el power-up-speed
+sonido_power_up_speed = pygame.mixer.Sound("assets/sounds/power-up-speed.wav")
+sonido_power_up_speed.set_volume(0.3)
 
 #constantes
 posponer = 0.1                          # Tiempo de espera entre cada actualización (controla la velocidad del juego).
@@ -61,9 +64,11 @@ cabeza.penup()                          # Evita que la cabeza dibuje lineas mien
 cabeza.goto(0,0)                  # Posiciona la cabeza en el centro de la pantalla.
 cabeza.direction = "stop"               # La cabeza comienza detenida (Sin direccion).
 
-### Power up speed configuracion
+### Configuracion del juego
 velocidad_inicial = 0.1
 velocidad = velocidad_inicial
+power_up_activo = False
+posponer = velocidad
 ###
 
 # Comida
@@ -80,19 +85,37 @@ x = random.randint(-280,280)         # Genera una posicion aleatoria en el eje X
 y = random.randint(-280,280)         # Genera una posicion aleatoria en el eje Y.
 comida.goto(x,y)                        # Coloca la comida en una posicion aleatoria.
 
-# Configuracion del power-up
+# Power-up de velocidad
+window.addshape("assets/img/speed.gif")
 power_up_speed = turtle.Turtle()
-power_up_speed.shape("assets/img/speed.gif")        # Usa la imagen en lugar de una forma.
+power_up_speed.shape("assets/img/speed.gif")
 power_up_speed.penup()
-power_up_speed.hideturtle()                         #Ocultar inicialmente el power-up
+power_up_speed.hideturtle()
 
-
+# Mostrar el power-up de velocidad en una posición aleatoria
 def aparecer_power_up_speed():
     x = random.randint(-280, 280)
     y = random.randint(-280, 280)
-    power_up_speed.goto(x,y)
+    power_up_speed.goto(x, y)
     power_up_speed.showturtle()
 
+# Función para activar el efecto del power-up
+def activar_power_up():
+    global velocidad, power_up_activo, posponer
+    duracion_power_up = random.randint(3, 7)  # Duración aleatoria entre 3 y 7 segundos
+    velocidad = velocidad_inicial / 2         # Aumenta la velocidad temporalmente
+    posponer = velocidad
+    power_up_activo = True
+    # Programar el desactivado después de la duración aleatoria del power-up
+    window.ontimer(desactivar_power_up, duracion_power_up * 1000)
+
+# Función para desactivar el efecto del power-up
+def desactivar_power_up():
+    global velocidad, power_up_activo, posponer
+    velocidad = velocidad_inicial
+    posponer = velocidad
+    power_up_activo = False
+    power_up_speed.hideturtle()
 
 
 # Variable para almacenar la ultima direccion completada
@@ -158,6 +181,18 @@ segmentos = []  # Lista para almacenar los segmentos del cuerpo de la serpiente.
 # Bucle principal del juego que se ejecuta de manera continua
 while True:
     window.update()                         # Actualiza la pantalla en cada iteracion.
+
+    # Manejo de colisiones con el power-up de velocidad
+    if cabeza.distance(power_up_speed) < 20 and not power_up_activo:
+        sonido_power_up_speed.play()
+        activar_power_up()
+        power_up_speed.hideturtle()  # Ocultar el power-up hasta que reaparezca
+
+    # Aparecer el power-up de velocidad aleatoriamente
+    if not power_up_activo and random.randint(0, 100) == 0:
+        aparecer_power_up_speed()
+
+
 
     # Pausa el juego por el tiempo especificado en 'posponer' (Para controlar la velocidad)
     time.sleep(posponer)
