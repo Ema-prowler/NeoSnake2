@@ -40,9 +40,6 @@ window.setup(width=600, height=600)     # Define el tamaño de la ventana a 600x
 window.tracer(0)                        # Desactiva la actualización automática de la pantalla
 
 
-# Imagen para el power-up
-window.addshape("assets/img/speed.gif")
-
 
 # Texto del marcador
 texto = turtle.Turtle()                 # Crea el objeto 'texto' para mostrar el marcador.
@@ -78,12 +75,29 @@ comida.shape("circle")                  # Asignando la forma de un circulo a la 
 comida.color("red")                     # Asignando el color rojo a la comida.
 comida.penup()                          # Evita que la comida dibuje mientras se mueve.
 
+# Segmentos del cuerpo de la serpiente (inicialmente vacíos)
+segmentos = []  # Lista para almacenar los segmentos del cuerpo de la serpiente.
+
+# Funcion que devuelve una lista de posiciones ocupadas por la serpiente
+def obtener_posiciones_cuerpo():
+    return [(segmento.xcor(), segmento.ycor()) for segmento in segmentos]
+
+def aparecer_comida():
+    posiciones_cuerpo = obtener_posiciones_cuerpo()
+    while True:
+        x = random.randint(-280, 280)
+        y = random.randint(-280, 280)
+        # Verifica que la nueva posicion no este en el cuerpo
+        if (x,y) not in posiciones_cuerpo:
+            comida.goto(x,y)
+            break
+
+aparecer_comida()
 
 # Generar una posición inicial aleatoria para la comida
-
-x = random.randint(-280,280)         # Genera una posicion aleatoria en el eje X.
-y = random.randint(-280,280)         # Genera una posicion aleatoria en el eje Y.
-comida.goto(x,y)                        # Coloca la comida en una posicion aleatoria.
+#x = random.randint(-280,280)         # Genera una posicion aleatoria en el eje X.
+#y = random.randint(-280,280)         # Genera una posicion aleatoria en el eje Y.
+#comida.goto(x,y)                        # Coloca la comida en una posicion aleatoria.
 
 # Power-up de velocidad
 window.addshape("assets/img/speed.gif")
@@ -94,10 +108,15 @@ power_up_speed.hideturtle()
 
 # Mostrar el power-up de velocidad en una posición aleatoria
 def aparecer_power_up_speed():
-    x = random.randint(-280, 280)
-    y = random.randint(-280, 280)
-    power_up_speed.goto(x, y)
-    power_up_speed.showturtle()
+    posiciones_cuerpo = obtener_posiciones_cuerpo()
+    while True:
+        x = random.randint(-280, 280)
+        y = random.randint(-280, 280)
+        # Verificar que la nueva posición no esté en el cuerpo
+        if (x, y) not in posiciones_cuerpo:
+            power_up_speed.goto(x, y)
+            power_up_speed.showturtle()
+            break
 
 # Función para activar el efecto del power-up
 def activar_power_up():
@@ -165,6 +184,10 @@ def mov():
     ultima_direccion = cabeza.direction
 
 
+
+
+
+
 # Configurar los controles del teclado
 
 window.listen()                            # Activa la escucha de eventos del teclado.
@@ -173,9 +196,6 @@ window.onkeypress(abajo, "Down")      # Asigna la tecla 'Down' para mover la ser
 window.onkeypress(izquierda, "Left")  # Asigna la tecla 'Left' para mover la serpiente hacia la izquierda
 window.onkeypress(derecha, "Right")   # Asigna la tecla 'Right' para mover la serpiente hacia la derecha.
 
-# Segmentos del cuerpo de la serpiente (inicialmente vacíos)
-segmentos = []  # Lista para almacenar los segmentos del cuerpo de la serpiente.
-
 
 
 # Bucle principal del juego que se ejecuta de manera continua
@@ -183,13 +203,13 @@ while True:
     window.update()                         # Actualiza la pantalla en cada iteracion.
 
     # Manejo de colisiones con el power-up de velocidad
-    if cabeza.distance(power_up_speed) < 20 and not power_up_activo:
+    if power_up_speed.isvisible() and cabeza.distance(power_up_speed) < 20 and not power_up_activo:
         sonido_power_up_speed.play()
         activar_power_up()
         power_up_speed.hideturtle()  # Ocultar el power-up hasta que reaparezca
 
     # Aparecer el power-up de velocidad aleatoriamente
-    if not power_up_activo and random.randint(0, 100) == 0:
+    if not power_up_activo and random.randint(0, 50) == 0:
         aparecer_power_up_speed()
 
 
