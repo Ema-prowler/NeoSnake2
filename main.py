@@ -36,6 +36,11 @@ window.bgcolor("black")                 # Establecer el color de fondo a negro
 window.setup(width=600, height=600)     # Define el tamaño de la ventana a 600x600 pixeles
 window.tracer(0)                        # Desactiva la actualización automática de la pantalla
 
+
+# Imagen para el power-up
+window.addshape("assets/img/speed.gif")
+
+
 # Texto del marcador
 texto = turtle.Turtle()                 # Crea el objeto 'texto' para mostrar el marcador.
 texto.speed(0)                          # No se necesita velocidad de animacion.
@@ -56,6 +61,11 @@ cabeza.penup()                          # Evita que la cabeza dibuje lineas mien
 cabeza.goto(0,0)                  # Posiciona la cabeza en el centro de la pantalla.
 cabeza.direction = "stop"               # La cabeza comienza detenida (Sin direccion).
 
+### Power up speed configuracion
+velocidad_inicial = 0.1
+velocidad = velocidad_inicial
+###
+
 # Comida
 comida = turtle.Turtle()                # Crear el objeto 'comida'
 comida.speed(0)                         # Velocidad de animacion rapida.
@@ -69,6 +79,20 @@ comida.penup()                          # Evita que la comida dibuje mientras se
 x = random.randint(-280,280)         # Genera una posicion aleatoria en el eje X.
 y = random.randint(-280,280)         # Genera una posicion aleatoria en el eje Y.
 comida.goto(x,y)                        # Coloca la comida en una posicion aleatoria.
+
+# Configuracion del power-up
+power_up_speed = turtle.Turtle()
+power_up_speed.shape("assets/img/speed.gif")        # Usa la imagen en lugar de una forma.
+power_up_speed.penup()
+power_up_speed.hideturtle()                         #Ocultar inicialmente el power-up
+
+
+def aparecer_power_up_speed():
+    x = random.randint(-280, 280)
+    y = random.randint(-280, 280)
+    power_up_speed.goto(x,y)
+    power_up_speed.showturtle()
+
 
 
 # Variable para almacenar la ultima direccion completada

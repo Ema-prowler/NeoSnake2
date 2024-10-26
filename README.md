@@ -13,3 +13,4 @@ Este es mi pequeño proyecto en el cual e creado el clasico juego de la viborita
 - Turtle
 - Time
 - Random
+- pygame
